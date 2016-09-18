@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>弹框</title>
+    <link rel="stylesheet" type="text/css" href="" />
+    <style>
+       #box{
+            width: 400px;
+            height: 300px ;
+            border: 1px solid #000 ;
+            position:relative;
+            -display: none ;
+       } 
+       h2{
+            margin: 0 ;
+            font: 30px/50px "微软雅黑" ;
+            border-bottom:1px solid #000;
+            position: absolute;
+            top: 0 ;
+            left:0 ;
+            width: 100% ;
+       }
+       a{
+            text-decoration: none ;
+       }
+       #content{
+            font: 20px/30px "宋体" ;
+            position: absolute;
+            left: 0 ;
+            top:51px;
+       }
+        #footer{
+            position: absolute;
+            left: 0 ;
+            bottom: 0 ;
+            height: 50px ;
+            font: 30px/50px "宋体" ;
+            width: 100% ;
+            border-top:1px solid #000;
+        }
+        #footer span{
+            display: inline-block;
+            border: 1px solid #000 ;
+            font: 20px/40px "宋体" ;
+            color: #000 ;
+            background: #2671F3 ;
+        }
+        #close{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="唐诗一" />
+    <input type="button" value="唐诗二" />
+    <input type="button" value="唐诗三" />
+   <!--  <div id="box">
+        <h2 id="title">这是一个弹框
+            <span id="close">X</span>
+        </h2>
+        <div id="content">请输入要弹出的内容</div>
+        <div id="footer">
+            <span id="sure">确定</span>
+            <span id="cancle">取消</span>
+        </div>
+    </div> -->
+</body>
+</html>
+<script src="jquery.js"></script>
+<script src="jquery.drag.js"></script>
+<script src="jquery.dialog.js"></script>
+<script type="text/javascript">
+   var allBtn = $("input") ;
+   $(allBtn[0]).on("click",function(){
+        $("div").remove("#box") ;
+        $(allBtn[0]).dialog({
+            title:"唐诗一" ,
+            content:"床前明月光,<br/>疑是地上霜。<br/>举头望明月,<br/>低头思故乡。"
+        })
+   })
+   $(allBtn[1]).on("click",function(){
+        $("div").remove("#box") ;
+        $(allBtn[1]).dialog({
+            title:"唐诗二" ,
+            content:"鹅 鹅 鹅,<br/>曲项向天歌。<br/>白毛浮力水,<br/>红掌拨清波。"
+        })
+   })
+   $(allBtn[2]).on("click",function(){
+        $("div").remove("#box") 
+        $(allBtn[2]).dialog({
+            title:"唐诗三" ,
+            content:"青青原上草,<br/>一岁一枯荣。<br/>野火烧不尽,<br/>春风吹又生。"
+        })
+   })
+</script>
