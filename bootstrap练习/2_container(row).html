@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>bootstrap</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">                   <!-- 在IE下有一个好的渲染 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">    <!-- 在移动端有一个好的视口（适应移动端） -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <!-- 兼容性js语句 -->
+     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+       div[class*="col-lg-"]{
+            background: #666 ;
+            border: 1px solid #00f ;
+            color: red ;
+       }
+    </style>
+</head>
+<body>
+    <div class="container">                 
+        <div class="row">
+            <div class="col-lg-1">col-lg-1</div><!-- col-lg-num num代表当前class的元素在整行中所占有多少列，col-lg-1 表示占一列的宽度。col-lg-11表示占11列的宽度-->
+            <div class="col-lg-11">col-lg-11</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">col-lg-4</div><!-- col-lg-num num代表当前class的元素在整行中所占有多少列，col-lg-1 表示占一列的宽度。col-lg-11表示占11列的宽度-->
+            <div class="col-lg-6">col-lg-6</div>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-2.2.4.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>

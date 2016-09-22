@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>bootstrap</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">                   <!-- 在IE下有一个好的渲染 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">    <!-- 在移动端有一个好的视口（适应移动端） -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <!-- 兼容性js语句 -->
+     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .tips1{
+            width: 50px ;
+            height: 300px ;
+            background: black ;
+            right: 0 ;
+        }
+        .tips2{
+            width: 50px ;
+            height: 100px ;
+            background: blue ;
+            right: 0 ;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">  
+       <br/>
+       <input type="button" value="模人样式">
+       <input type="button" value="首选项" class="btn btn-primary">
+       <input type="button" value="成功" class="btn btn-success">
+       <input type="button" value="警告" class="btn btn-warning">
+       <input type="button" value="一般信息" class="btn btn-info">
+       <input type="button" value="危险" class="btn btn-danger">
+        <br/><br/>
+        <p>默认</p>
+        <p class="bg-primary">首选项</p>
+        <p class="bg-success">成功</p>
+        <p class="bg-warning">警告</p>
+        <p class="bg-info">一般信息</p>
+        <p class="bg-danger">危险</p>
+        <br /><br />
+        <span>默认文字</span>
+        <span class="text-primary">首选项</span>
+        <span class="text-success">成功</span>
+        <span class="text-warning">警告</span>
+        <span class="text-info">一般信息</span>
+        <span class="text-danger">危险</span>
+        <br><br>
+        <a href="javascript" class="btn btn-primary">按钮</a>
+        <a href="javascript" class="bg-warning">警告</a>
+        <a href="javascript" class="text-danger">危险</a>r
+        <br><br>
+        <div class="alert alert-warning">我是警告框</div>
+        <div class="alert alert-danger">我是危险信息</div>
+        <br><br>
+        <!-- 面板插件 -->
+        <div class="panel panel-primary">
+            <div class="panel panel-heading">我是面板头部</div>
+            <div class="panel panel-body">我是面板主题</div>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-2.2.4.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
