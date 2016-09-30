@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html style="height:100%">
+<head>
+    <meta charset="utf-8">
+    <title>全屏滚动demo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">                   <!-- 在IE下有一个好的渲染 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">    <!-- 在移动端有一个好的视口（适应移动端） -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <!-- 兼容性js语句 -->
+     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        body{
+            height: 100% ;
+            overflow: hidden;
+        }
+        ul{list-style: none;}
+        #wrap{
+            height: 100% ;
+        }
+        .tips1{
+            height: 400px ;
+            width: 50px ;
+            right: 45px;
+            top: 200px ;
+            z-index: 100 ;
+        }
+        
+        li{
+            height: 50px;
+            width: 50px ;
+            background: yellow ;
+            border: 1px solid #000 ;
+            border-radius: 26px ;
+        }
+        .wrap{
+            position:absolute;
+            left: 0 ;
+            top: 0 ;
+            width: 100% ;
+        }
+        .box{
+            height: 100% ;
+            border: 1px solid #000 ;
+        }
+        .div1{
+            background: url(image/img1.jpg) repeat ;
+        }
+        .div2{
+            position: relative;
+            background: url(image/img2.jpg) repeat ;
+        }
+        .div3{
+            position: relative;
+            background: url(image/img3.jpg) repeat ;
+        }
+        .div4{
+            background: url(image/img4.jpg) repeat ;
+            position: relative;
+        }
+        .div5{
+            background: red ;
+            width: 100px ;
+            height: 100px ;
+            border-radius: 51px ;
+        }
+        .div6{
+            width: 100px ;
+            height: 100px ;
+            background: #F88C0B ;
+            border-radius: 51px ;
+            position: absolute;
+            left: 0 ;
+            top: 260px;
+        }
+        .div7{
+            width: 100px ;
+            height: 100px ;
+            background: #F88C0B ;
+            border-radius: 51px ;
+            position: absolute;
+            right: 0 ;
+            top: 260px;
+        }
+        .div8{
+            width: 300px ;
+            height: 300px;
+            background: #73EF68 ;
+            position: absolute;
+            left: 540px;
+            top: 200px ;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <ul class="tips1 visible-lg-block affix">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div class="wrap">
+        <div class="box div1"></div>
+        <div class="box div2"><div class="div5"></div></div>
+        <div class="box div3"><div class="div6"></div><div class="div7"></div></div>
+        <div class="box div4"><div class="div8"></div></div>
+    </div>
+    
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-2.2.4.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/MTween3.js"></script>
+<script type="text/javascript">
+    var allLi = document.getElementsByTagName("li") ;
+    var allDiv = document.getElementsByClassName("wrap")[0] ;
+    var n = 0 ;
+    var len = allLi.length - n ;
+    allLi[n].style.background = "blue" ;
+    var heiT = document.documentElement.clientHeight ;
+    var allDIV = $(".box") ;
+    $(allDIV).css({height:heiT}) ;
+    document.onmousewheel = function (ev){
+        ev.preventDefault ;
+         for(var i=0;i< allLi.length;i++){
+            allLi[i].style.background = "yellow" ;
+        }
+        var direction = true ;      //方向向上为true
+        if( ev.wheelDelta ){
+            direction = ev.wheelDelta < 0 ? true : false ;
+        }
+        if( direction ){
+            n++ ;
+            if ( n > allLi.length-1 ) n = allLi.length-1 ;
+        }else {
+            n -- ;
+            if( n<0 ) n = 0 ;
+        };
+        allLi[n].style.background = "blue" ;
+        MTween(allDiv,{top:-n*heiT},3000,"linear",runing( n )) ;
+    }  
+    function  runing (n){ 
+        console.log(n)
+        switch (n){
+            //切换到第一屏时
+            case 0 :
+            $(".div5").animate({
+                left: 0 ,
+                top: 0 
+            },3000)
+            break ;
+            //切换到第二屏时
+             case 1 :
+            $(".div5").animate({
+                left: 600 ,
+                top: 300 
+            },3000);
+            $(".div6").animate({
+                left:0 ,
+                top:300
+            },2000) ; 
+            $(".div7").animate({
+                left:1266 ,
+                top:300
+            },3000);
+            break ;
+            //第三屏时
+             case 2 :
+            $(".div5").animate({
+                left: 0 ,
+                top: 0 
+            },3000)
+            $(".div6").animate({
+                left:600 ,
+                top:300
+            },3000) ; 
+            $(".div7").animate({
+                left:700 ,
+                top:300
+            },3000) ;
+            break ;
+            //第四屏
+             case 3 :
+           $(".div6").animate({
+                left:0 ,
+                top:300
+            },3000) ; 
+            $(".div7").animate({
+                left:1266 ,
+                top:300
+            },3000) ;
+            break ;
+        }
+    }
+</script>

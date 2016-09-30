@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>全屏滚动demo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">                   <!-- 在IE下有一个好的渲染 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">    <!-- 在移动端有一个好的视口（适应移动端） -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <!-- 兼容性js语句 -->
+     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        body{
+            height: 100% ;
+            overflow: hidden;
+        }
+        ul{list-style: none;}
+        #wrap{
+            height: 100% ;
+        }
+        .tips1{
+            height: 400px ;
+            width: 50px ;
+            right: 45px;
+            top: 200px ;
+            z-index: 100 ;
+        }
+        
+        li{
+            height: 50px;
+            width: 50px ;
+            background: yellow ;
+            border: 1px solid #000 ;
+            border-radius: 26px ;
+        }
+        .box{
+            height: 100px ;
+            border: 1px solid #000 ;
+            position: relative;
+        }
+        .div1{
+            background: #69F015 ;
+        }
+        .div2{
+            background: #F62A2A;
+        }
+        .div3{
+            background: #341FF0;
+        }
+        .div4{
+            background: #15F0C6 ;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <ul class="tips1 visible-lg-block affix">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <!-- <div class="wrap"> -->
+        <div class="box div1"></div>
+        <div class="box div2"></div>
+        <div class="box div3"></div>
+        <div class="box div4"></div>
+   <!--  </div> -->
+    
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-2.2.4.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript">
+    var allLi = document.getElementsByTagName("li") ;
+    var allDiv = document.getElementsByClassName("box") ;
+    var n = 0 ;
+    allLi[n].style.background = "blue" ;
+    allDiv[n].style.background = "#69F015" ;
+    var heiT = document.documentElement.clientHeight ;
+    var allDIV = $(".box") ;
+    $(allDIV).css({height:heiT}) ;
+    document.onmousewheel = function (ev){
+        ev.preventDefault ;
+         for(var i=0;i< allLi.length;i++){
+            allLi[i].style.background = "yellow" ;
+        }
+        var direction = true ;      //方向向上为true
+        if( ev.wheelDelta ){
+            direction = ev.wheelDelta < 0 ? true : false ;
+        }
+        if( direction ){
+            n++ ;
+            if ( n > allLi.length-1 ) n = allLi.length-1 ;
+        }else {
+            n -- ;
+            if( n<0 ) n = 0 ;
+        };
+        allLi[n].style.background = "blue" ;
+        allDiv[n].style.background = "blue" ;
+    }  
+  
+</script>
